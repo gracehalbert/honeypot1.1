@@ -20,4 +20,8 @@ angular.module('myPets', [])
     $location.path('/app/editPet');
   }
 
+  $scope.goToAdopt = function() {
+    $location.path('/app/adoptPet');
+  }
+
 })
