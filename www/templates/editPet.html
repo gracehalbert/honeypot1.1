@@ -1,5 +1,26 @@
-<ion-view view-title="Edit Pet">
+<ion-view cache-view="false" view-title="Edit Pet">
   <ion-content>
-    <h3>Edit pet page</h3>
+    <h1>Edit pet page</h1>
+    <form name="editPetForm" ng-submit='edit()'>
+      </label>
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Pet Name:</span>
+          <input type="text" ng-model="petName">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Saving for:</span>
+          <input type="text" ng-model="goal">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Goal Amount:</span>
+          <input type="text" ng-model="goal_amt">
+        </label>
+      </div>
+      <button class="button button-full button-energized">
+        Submit Changes
+      </button>
+    </form>
+
   </ion-content>
 </ion-view>

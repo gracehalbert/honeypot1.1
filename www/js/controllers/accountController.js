@@ -58,8 +58,8 @@ angular.module('app.account', [])
                 checkingHandler.open();
             };
 
-            $scope.goToFirstPet = function() {
-               $location.path('/app/firstPet');
+            $scope.goToPet = function() {
+               $location.path('/market/pet');
              };
         }
     );
