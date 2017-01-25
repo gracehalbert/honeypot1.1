@@ -1,20 +1,22 @@
 angular.module('editPet', [])
 .controller('editPetController', function($scope, $rootScope, $http, $location) {
 
-  $scope.goal_amt = $rootScope.pet.goal_amt;
-  $scope.petName = $rootScope.pet.name;
-  $scope.goal = $rootScope.pet.goal_name;
+  $http.get(`http://localhost:3000/v1/pets/${$rootScope.pet.id}`)
+    .then(function(res) {
+      console.log(res.data.data[0]);
+      $scope.pet.goal_amt = res.data.data[0].goal_amt;
+      $scope.pet.petName = res.data.data[0].name;
+      $scope.pet.goal = res.data.data[0].goal_name;
+    }, function(err) {
+      console.log(err);
+    });
 
+  console.log($scope.pet.petName);
 
-  $scope.edit = function() {
-    $rootScope.pet.goal_amt = $scope.goal_amt;
-    $rootScope.pet.goal_name = $scope.goal_name;
-    $rootScope.pet.name = $scope.petName;
-    $http.put(`http://localhost:3000/v1/pets/${$rootScope.pet.id}`, $rootScope.pet)
-      .then(function(res) {
-        $location.path('/market/pet');
-      }, function(err) {
-        console.log(err);
-      });
-  }
+  $http.put(`http://localhost:3000/v1/pets/${$rootScope.pet.id}`, $scope.pet)
+    .then(function(res) {
+      console.log(res);
+    }, function(err) {
+      console.log(err);
+    })
 })
